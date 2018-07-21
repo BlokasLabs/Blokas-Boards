@@ -42,4 +42,4 @@ midimon.build.mcu=atmega328p
 midimon.build.f_cpu=20000000L
 midimon.build.board=AVR_UNO
 midimon.build.core=arduino:arduino
-midimon.build.variant=arduino:standard
+midimon.build.variant=midimon
