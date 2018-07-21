@@ -1,0 +1,45 @@
+# See:
+# * https://code.google.com/archive/p/arduino/wikis/Platforms.wiki
+# * https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.5-3rd-party-Hardware-specification
+# * https://github.com/arduino/Arduino/wiki/Arduino-Hardware-Cores-migration-guide-from-1.0-to-1.6
+
+menu.cpu=Processor
+
+midimon.name=Midimon
+
+midimon.vid.0=0x2341
+midimon.pid.0=0x0043
+midimon.vid.1=0x2341
+midimon.pid.1=0x0001
+midimon.vid.2=0x2A03
+midimon.pid.2=0x0043
+midimon.vid.3=0x2341
+midimon.pid.3=0x0243
+
+midimon.upload.tool=avrdude
+midimon.upload.protocol=usbasp
+midimon.upload.maximum_size=32256
+midimon.upload.maximum_data_size=2048
+midimon.upload.speed=115200
+midimon.serial.port=usb
+
+#midimon.bootloader.tool=avrdude
+#midimon.bootloader.low_fuses=0xFF
+#midimon.bootloader.high_fuses=0xDE
+#midimon.bootloader.extended_fuses=0xFD
+#midimon.bootloader.unlock_bits=0x3F
+#midimon.bootloader.lock_bits=0x0F
+#midimon.bootloader.file=optiboot/optiboot_atmega328.hex
+
+#midimon.bootloader.low_fuses=0xCE
+#midimon.bootloader.high_fuses=0xD9
+#midimon.bootloader.extended_fuses=0xFF
+#midimon.bootloader.unlock_bits=0x3F
+#midimon.bootloader.lock_bits=0x0F
+#midimon.bootloader.file=usbasp/main.hex
+
+midimon.build.mcu=atmega328p
+midimon.build.f_cpu=20000000L
+midimon.build.board=AVR_UNO
+midimon.build.core=arduino:arduino
+midimon.build.variant=arduino:standard
