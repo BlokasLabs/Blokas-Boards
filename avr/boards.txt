@@ -18,28 +18,22 @@ midimon.pid.3=0x0243
 
 midimon.upload.tool=avrdude
 midimon.upload.protocol=usbasp
-midimon.upload.maximum_size=32256
+midimon.upload.maximum_size=28672
 midimon.upload.maximum_data_size=2048
 midimon.upload.speed=115200
-midimon.serial.port=usb
 
-#midimon.bootloader.tool=avrdude
-#midimon.bootloader.low_fuses=0xFF
-#midimon.bootloader.high_fuses=0xDE
-#midimon.bootloader.extended_fuses=0xFD
-#midimon.bootloader.unlock_bits=0x3F
-#midimon.bootloader.lock_bits=0x0F
-#midimon.bootloader.file=optiboot/optiboot_atmega328.hex
-
-#midimon.bootloader.low_fuses=0xCE
-#midimon.bootloader.high_fuses=0xD9
-#midimon.bootloader.extended_fuses=0xFF
-#midimon.bootloader.unlock_bits=0x3F
-#midimon.bootloader.lock_bits=0x0F
-#midimon.bootloader.file=usbasp/main.hex
+midimon.bootloader.tool=avrdude
+midimon.bootloader.low_fuses=0xCE
+midimon.bootloader.high_fuses=0xD8
+midimon.bootloader.extended_fuses=0xFF
+midimon.bootloader.unlock_bits=0xFF
+midimon.bootloader.lock_bits=0xCF
+midimon.bootloader.file=USBasploader/USBasploader.hex
 
 midimon.build.mcu=atmega328p
 midimon.build.f_cpu=20000000L
 midimon.build.board=AVR_UNO
 midimon.build.core=arduino:arduino
 midimon.build.variant=midimon
+# PD7 and PD2 used for USB D- and D+
+midimon.build.extra_flags=-DUSB_CFG_IOPORTNAME=D -DUSB_CFG_DMINUS_BIT=7 -DUSB_CFG_DPLUS_BIT=2
