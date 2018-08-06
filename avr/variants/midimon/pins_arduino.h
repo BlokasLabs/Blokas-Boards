@@ -55,19 +55,19 @@ static const uint8_t MISO      = PIN_SPI_MISO;
 static const uint8_t SCK       = PIN_SPI_SCK;
 static const uint8_t LCD_CD    = PIN_LCD_CD;
 static const uint8_t LCD_RESET = PIN_LCD_RESET;
-static const uint8_t BTN_ENTER = PIN_BTN_ENTER;
-static const uint8_t BTN_UP    = PIN_BTN_UP;
-static const uint8_t BTN_DOWN  = PIN_BTN_DOWN;
+static const uint8_t BTN_ENTER = PIN_BTN_ENTER; // PD6, PCINT22
+static const uint8_t BTN_UP    = PIN_BTN_UP;    // PC3, PCINT11
+static const uint8_t BTN_DOWN  = PIN_BTN_DOWN;  // PC4, PCINT12
 
 #define SDA 0
 #define SCL 0
 
-//#define digitalPinToPCICR(p)    (((p) >= 0 && (p) <= 21) ? (&PCICR) : ((uint8_t *)0))
-//#define digitalPinToPCICRbit(p) (((p) <= 7) ? 2 : (((p) <= 13) ? 0 : 1))
-//#define digitalPinToPCMSK(p)    (((p) <= 7) ? (&PCMSK2) : (((p) <= 13) ? (&PCMSK0) : (((p) <= 21) ? (&PCMSK1) : ((uint8_t *)0))))
-//#define digitalPinToPCMSKbit(p) (((p) <= 7) ? (p) : (((p) <= 13) ? ((p) - 8) : ((p) - 14)))
+#define digitalPinToPCICR(p)      (((p) >= PIN_BTN_ENTER && (p) <= PIN_BTN_DOWN) ? (&PCICR) : (uint8_t*)0)
+#define digitalPinToPCICRbit(p)   (((p) == PIN_BTN_ENTER) ? 2 : (((p) == PIN_BTN_DOWN || (p) == PIN_BTN_UP) ? 1 : 0))
+#define digitalPinToPCMSK(p)      (((p) == PIN_BTN_ENTER) ? (&PCMSK2) : (((p) == PIN_BTN_DOWN || (p) == PIN_BTN_UP) ? (&PCMSK1) : ((uint8_t*)0)))
+#define digitalPinToPCMSKbit(p)   (((p) == PIN_BTN_ENTER) ? 6 : (((p) == PIN_BTN_DOWN) ? 3 : (((p) == PIN_BTN_UP) ? 4 : 0)))
 
-//#define digitalPinToInterrupt(p)  ((p) == 2 ? 0 : ((p) == 3 ? 1 : NOT_AN_INTERRUPT))
+#define digitalPinToInterrupt(p)  ((p) == PIN_BTN_DOWN ? 0 : NOT_AN_INTERRUPT)
 
 //#define digitalPinToInterrupt NOT_AN_INTERRUPT
 
