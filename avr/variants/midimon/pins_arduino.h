@@ -25,39 +25,42 @@
 
 #include <avr/pgmspace.h>
 
-// 0 - SS         PB2
-// 1 - MOSI       PB3
-// 2 - MISO       PB4
-// 3 - SCK        PB5
-// 4 - LCD_CD     PC1
-// 5 - LCD_RESET  PC2
-// 6 - BTN_ENTER  PD6
-// 7 - BTN_UP     PC4
-// 8 - BTN_DOWN   PC3
+// 0 - SS            PB2
+// 1 - MOSI          PB3
+// 2 - MISO          PB4
+// 3 - SCK           PB5
+// 4 - LCD_CD        PC1
+// 5 - LCD_RESET     PC2
+// 6 - LCD_BACKLIGHT PC0
+// 7 - BTN_ENTER     PD6
+// 8 - BTN_UP        PC4
+// 9 - BTN_DOWN      PC3
 
-#define NUM_DIGITAL_PINS            9
+#define NUM_DIGITAL_PINS            10
 #define NUM_ANALOG_INPUTS           0
 //#define analogInputToDigitalPin(p)  ((p < 6) ? (p) + 14 : -1)
 
-#define PIN_SPI_SS    (0)
-#define PIN_SPI_MOSI  (1)
-#define PIN_SPI_MISO  (2)
-#define PIN_SPI_SCK   (3)
-#define PIN_LCD_CD    (4)
-#define PIN_LCD_RESET (5)
-#define PIN_BTN_ENTER (6)
-#define PIN_BTN_UP    (7)
-#define PIN_BTN_DOWN  (8)
+#define PIN_SPI_SS        (0)
+#define PIN_SPI_MOSI      (1)
+#define PIN_SPI_MISO      (2)
+#define PIN_SPI_SCK       (3)
+#define PIN_LCD_CD        (4)
+#define PIN_LCD_RESET     (5)
+#define PIN_LCD_BACKLIGHT (6)
+#define PIN_BTN_ENTER     (7)
+#define PIN_BTN_UP        (8)
+#define PIN_BTN_DOWN      (9)
 
-static const uint8_t SS        = PIN_SPI_SS;
-static const uint8_t MOSI      = PIN_SPI_MOSI;
-static const uint8_t MISO      = PIN_SPI_MISO;
-static const uint8_t SCK       = PIN_SPI_SCK;
-static const uint8_t LCD_CD    = PIN_LCD_CD;
-static const uint8_t LCD_RESET = PIN_LCD_RESET;
-static const uint8_t BTN_ENTER = PIN_BTN_ENTER; // PD6, PCINT22
-static const uint8_t BTN_UP    = PIN_BTN_UP;    // PC3, PCINT11
-static const uint8_t BTN_DOWN  = PIN_BTN_DOWN;  // PC4, PCINT12
+static const uint8_t SS            = PIN_SPI_SS;
+static const uint8_t MOSI          = PIN_SPI_MOSI;
+static const uint8_t MISO          = PIN_SPI_MISO;
+static const uint8_t SCK           = PIN_SPI_SCK;
+static const uint8_t LCD_CD        = PIN_LCD_CD;
+static const uint8_t LCD_RESET     = PIN_LCD_RESET;
+static const uint8_t LCD_BACKLIGHT = PIN_LCD_BACKLIGHT;
+static const uint8_t BTN_ENTER     = PIN_BTN_ENTER; // PD6, PCINT22
+static const uint8_t BTN_UP        = PIN_BTN_UP;    // PC3, PCINT11
+static const uint8_t BTN_DOWN      = PIN_BTN_DOWN;  // PC4, PCINT12
 
 #define SDA 0
 #define SCL 0
@@ -147,6 +150,7 @@ const uint8_t PROGMEM digital_pin_to_port_PGM[] = {
 	PB,
 	PC,
 	PC,
+	PC,
 	PD,
 	PC,
 	PC,
@@ -159,6 +163,7 @@ const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
 	_BV(5),
 	_BV(1),
 	_BV(2),
+	_BV(0),
 	_BV(6),
 	_BV(4),
 	_BV(3),

@@ -36,4 +36,4 @@ midimon.build.board=AVR_UNO
 midimon.build.core=arduino:arduino
 midimon.build.variant=midimon
 # PD7 and PD2 used for USB D- and D+
-midimon.build.extra_flags=-DUSB_CFG_IOPORTNAME=D -DUSB_CFG_DMINUS_BIT=7 -DUSB_CFG_DPLUS_BIT=2
+midimon.build.extra_flags=-DUSB_CFG_IOPORTNAME=D -DUSB_CFG_DMINUS_BIT=7 -DUSB_CFG_DPLUS_BIT=2 -DUSB_CFG_PULLUP_IOPORTNAME=D -DUSB_CFG_PULLUP_BIT=5
