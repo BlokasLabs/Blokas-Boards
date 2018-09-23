@@ -29,14 +29,15 @@
 // 1 - MOSI          PB3
 // 2 - MISO          PB4
 // 3 - SCK           PB5
-// 4 - LCD_CD        PC1
-// 5 - LCD_RESET     PC2
-// 6 - LCD_BACKLIGHT PC0
-// 7 - BTN_ENTER     PD6
+// 4 - LCD_CD        PC0
+// 5 - LCD_RESET     PC1
+// 6 - LCD_BACKLIGHT PB1
+// 7 - BTN_OK        PC5
 // 8 - BTN_UP        PC4
 // 9 - BTN_DOWN      PC3
+//10 - BTN_BACK      PC2
 
-#define NUM_DIGITAL_PINS            10
+#define NUM_DIGITAL_PINS            11
 #define NUM_ANALOG_INPUTS           0
 //#define analogInputToDigitalPin(p)  ((p < 6) ? (p) + 14 : -1)
 
@@ -47,9 +48,10 @@
 #define PIN_LCD_CD        (4)
 #define PIN_LCD_RESET     (5)
 #define PIN_LCD_BACKLIGHT (6)
-#define PIN_BTN_ENTER     (7)
-#define PIN_BTN_UP        (8)
-#define PIN_BTN_DOWN      (9)
+#define PIN_BTN_OK        (7)
+#define PIN_BTN_BACK      (8)
+#define PIN_BTN_UP        (9)
+#define PIN_BTN_DOWN      (10)
 
 static const uint8_t SS            = PIN_SPI_SS;
 static const uint8_t MOSI          = PIN_SPI_MOSI;
@@ -58,21 +60,20 @@ static const uint8_t SCK           = PIN_SPI_SCK;
 static const uint8_t LCD_CD        = PIN_LCD_CD;
 static const uint8_t LCD_RESET     = PIN_LCD_RESET;
 static const uint8_t LCD_BACKLIGHT = PIN_LCD_BACKLIGHT;
-static const uint8_t BTN_ENTER     = PIN_BTN_ENTER; // PD6, PCINT22
-static const uint8_t BTN_UP        = PIN_BTN_UP;    // PC3, PCINT11
-static const uint8_t BTN_DOWN      = PIN_BTN_DOWN;  // PC4, PCINT12
+static const uint8_t BTN_OK        = PIN_BTN_OK;    // PC2 PCINT10
+static const uint8_t BTN_BACK      = PIN_BTN_BACK;  // PC3 PCINT11
+static const uint8_t BTN_UP        = PIN_BTN_UP;    // PC4 PCINT12
+static const uint8_t BTN_DOWN      = PIN_BTN_DOWN;  // PC5 PCINT13
 
 #define SDA 0
 #define SCL 0
 
-#define digitalPinToPCICR(p)      (((p) >= PIN_BTN_ENTER && (p) <= PIN_BTN_DOWN) ? (&PCICR) : (uint8_t*)0)
-#define digitalPinToPCICRbit(p)   (((p) == PIN_BTN_ENTER) ? 2 : (((p) == PIN_BTN_DOWN || (p) == PIN_BTN_UP) ? 1 : 0))
-#define digitalPinToPCMSK(p)      (((p) == PIN_BTN_ENTER) ? (&PCMSK2) : (((p) == PIN_BTN_DOWN || (p) == PIN_BTN_UP) ? (&PCMSK1) : ((uint8_t*)0)))
-#define digitalPinToPCMSKbit(p)   (((p) == PIN_BTN_ENTER) ? 6 : (((p) == PIN_BTN_DOWN) ? 3 : (((p) == PIN_BTN_UP) ? 4 : 0)))
+#define digitalPinToPCICR(p)      (((p) >= PIN_BTN_OK && (p) <= PIN_BTN_DOWN) ? (&PCICR) : (uint8_t*)0)
+#define digitalPinToPCICRbit(p)   (((p) >= PIN_BTN_OK && (p) <= PIN_BTN_DOWN) ? 1 : 0)
+#define digitalPinToPCMSK(p)      (((p) >= PIN_BTN_OK && (p) <= PIN_BTN_DOWN) ? (&PCMSK1) : ((uint8_t*)0))
+#define digitalPinToPCMSKbit(p)   (((p) == PIN_BTN_OK) ? 5 : (((p) == PIN_BTN_DOWN) ? 3 : (((p) == PIN_BTN_UP) ? 4 : (((p) == PIN_BTN_BACK) ? 2 : 0))))
 
-#define digitalPinToInterrupt(p)  ((p) == PIN_BTN_DOWN ? 0 : NOT_AN_INTERRUPT)
-
-//#define digitalPinToInterrupt NOT_AN_INTERRUPT
+#define digitalPinToInterrupt NOT_AN_INTERRUPT
 
 #ifdef ARDUINO_MAIN
 
@@ -150,8 +151,9 @@ const uint8_t PROGMEM digital_pin_to_port_PGM[] = {
 	PB,
 	PC,
 	PC,
+	PB,
 	PC,
-	PD,
+	PC,
 	PC,
 	PC,
 };
@@ -161,16 +163,19 @@ const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
 	_BV(3),
 	_BV(4),
 	_BV(5),
+	_BV(0),
+	_BV(1),
 	_BV(1),
 	_BV(2),
-	_BV(0),
-	_BV(6),
-	_BV(4),
 	_BV(3),
+	_BV(4),
+	_BV(5),
 };
 
 const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
 	NOT_ON_TIMER, /* 0 - port D */
+	NOT_ON_TIMER,
+	NOT_ON_TIMER,
 	NOT_ON_TIMER,
 	NOT_ON_TIMER,
 	NOT_ON_TIMER,
