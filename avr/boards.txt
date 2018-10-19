@@ -25,10 +25,10 @@ midimon.upload.speed=115200
 midimon.bootloader.tool=avrdude
 midimon.bootloader.low_fuses=0xCE
 midimon.bootloader.high_fuses=0xD8
-midimon.bootloader.extended_fuses=0xFF
+midimon.bootloader.extended_fuses=0xFD
 midimon.bootloader.unlock_bits=0xFF
-midimon.bootloader.lock_bits=0xCF
-midimon.bootloader.file=USBasploader/USBasploader.hex
+midimon.bootloader.lock_bits=0xFF
+midimon.bootloader.file=Midimon-Bootloader/Midimon-Bootloader.hex
 
 midimon.build.mcu=atmega328p
 midimon.build.f_cpu=20000000L
