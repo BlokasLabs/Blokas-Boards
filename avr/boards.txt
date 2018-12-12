@@ -5,35 +5,35 @@
 
 menu.cpu=Processor
 
-midimon.name=Midimon
+midiboy.name=Midiboy
 
-midimon.vid.0=0x2341
-midimon.pid.0=0x0043
-midimon.vid.1=0x2341
-midimon.pid.1=0x0001
-midimon.vid.2=0x2A03
-midimon.pid.2=0x0043
-midimon.vid.3=0x2341
-midimon.pid.3=0x0243
+midiboy.vid.0=0x2341
+midiboy.pid.0=0x0043
+midiboy.vid.1=0x2341
+midiboy.pid.1=0x0001
+midiboy.vid.2=0x2A03
+midiboy.pid.2=0x0043
+midiboy.vid.3=0x2341
+midiboy.pid.3=0x0243
 
-midimon.upload.tool=avrdude
-midimon.upload.protocol=usbasp
-midimon.upload.maximum_size=28672
-midimon.upload.maximum_data_size=2048
-midimon.upload.speed=115200
+midiboy.upload.tool=avrdude
+midiboy.upload.protocol=usbasp
+midiboy.upload.maximum_size=28672
+midiboy.upload.maximum_data_size=2048
+midiboy.upload.speed=115200
 
-midimon.bootloader.tool=avrdude
-midimon.bootloader.low_fuses=0xCE
-midimon.bootloader.high_fuses=0xD8
-midimon.bootloader.extended_fuses=0xFD
-midimon.bootloader.unlock_bits=0xFF
-midimon.bootloader.lock_bits=0xFF
-midimon.bootloader.file=Midimon-Bootloader/Midimon-Bootloader.hex
+midiboy.bootloader.tool=avrdude
+midiboy.bootloader.low_fuses=0xCE
+midiboy.bootloader.high_fuses=0xD8
+midiboy.bootloader.extended_fuses=0xFD
+midiboy.bootloader.unlock_bits=0xFF
+midiboy.bootloader.lock_bits=0xFF
+midiboy.bootloader.file=Midiboy-Bootloader/Midiboy-Bootloader.hex
 
-midimon.build.mcu=atmega328p
-midimon.build.f_cpu=20000000L
-midimon.build.board=AVR_UNO
-midimon.build.core=arduino:arduino
-midimon.build.variant=midimon
+midiboy.build.mcu=atmega328p
+midiboy.build.f_cpu=20000000L
+midiboy.build.board=AVR_UNO
+midiboy.build.core=arduino:arduino
+midiboy.build.variant=midiboy
 # PD3 and PD2 used for USB D- and D+, PD4 is used for USB Pull-up.
-midimon.build.extra_flags=-DUSB_CFG_IOPORTNAME=D -DUSB_CFG_DMINUS_BIT=3 -DUSB_CFG_DPLUS_BIT=2 -DUSB_CFG_PULLUP_IOPORTNAME=D -DUSB_CFG_PULLUP_BIT=4
+midiboy.build.extra_flags=-DUSB_CFG_IOPORTNAME=D -DUSB_CFG_DMINUS_BIT=3 -DUSB_CFG_DPLUS_BIT=2 -DUSB_CFG_PULLUP_IOPORTNAME=D -DUSB_CFG_PULLUP_BIT=4 -DMIDIBOY=4
