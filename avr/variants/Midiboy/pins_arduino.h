@@ -31,8 +31,8 @@
 // 3 - SCK           PB5
 // 4 - LCD_DC        PD7
 // 5 - LCD_RESET     PD6
-// 6 - BTN_A         PC0 PCINT8
-// 7 - BTN_B         PC1 PCINT9
+// 6 - BTN_A         PC1 PCINT9
+// 7 - BTN_B         PC0 PCINT8
 // 8 - BTN_UP        PC5 PCINT13
 // 9 - BTN_DOWN      PC3 PCINT11
 //10 - BTN_LEFT      PC4 PCINT12
@@ -74,7 +74,7 @@ static const uint8_t BTN_RIGHT     = PIN_BTN_RIGHT;
 #define digitalPinToPCICR(p)      (((p) >= PIN_BTN_A && (p) <= PIN_BTN_RIGHT) ? (&PCICR) : (uint8_t*)0)
 #define digitalPinToPCICRbit(p)   (((p) >= PIN_BTN_A && (p) <= PIN_BTN_RIGHT) ? 1 : 0)
 #define digitalPinToPCMSK(p)      (((p) >= PIN_BTN_A && (p) <= PIN_BTN_RIGHT) ? (&PCMSK1) : ((uint8_t*)0))
-#define digitalPinToPCMSKbit(p)   (((p) == PIN_BTN_A) ? 0 : (((p) == PIN_BTN_DOWN) ? 3 : (((p) == PIN_BTN_UP) ? 5 : (((p) == PIN_BTN_B) ? 1 : (((p) == PIN_BTN_LEFT) ? 4 : (((p) == PIN_BTN_RIGHT) ? 2 : 0))))))
+#define digitalPinToPCMSKbit(p)   (((p) == PIN_BTN_A) ? 1 : (((p) == PIN_BTN_DOWN) ? 3 : (((p) == PIN_BTN_UP) ? 5 : (((p) == PIN_BTN_B) ? 0 : (((p) == PIN_BTN_LEFT) ? 4 : (((p) == PIN_BTN_RIGHT) ? 2 : 0))))))
 
 #define digitalPinToInterrupt NOT_AN_INTERRUPT
 
