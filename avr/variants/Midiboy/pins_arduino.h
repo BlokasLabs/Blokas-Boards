@@ -37,8 +37,10 @@
 // 9 - BTN_DOWN      PC3 PCINT11
 //10 - BTN_LEFT      PC4 PCINT12
 //11 - BTN_RIGHT     PC2 PCINT10
+//12 - SPK_A         PB0
+//13 - SPK_B         PB1
 
-#define NUM_DIGITAL_PINS            12
+#define NUM_DIGITAL_PINS            14
 #define NUM_ANALOG_INPUTS           0
 //#define analogInputToDigitalPin(p)  ((p < 6) ? (p) + 14 : -1)
 
@@ -54,27 +56,47 @@
 #define PIN_BTN_DOWN      (9)
 #define PIN_BTN_LEFT      (10)
 #define PIN_BTN_RIGHT     (11)
-
-static const uint8_t SS            = PIN_SPI_SS;
-static const uint8_t MOSI          = PIN_SPI_MOSI;
-static const uint8_t MISO          = PIN_SPI_MISO;
-static const uint8_t SCK           = PIN_SPI_SCK;
-static const uint8_t LCD_DC        = PIN_LCD_DC;
-static const uint8_t LCD_RESET     = PIN_LCD_RESET;
-static const uint8_t BTN_A         = PIN_BTN_A;
-static const uint8_t BTN_B         = PIN_BTN_B;
-static const uint8_t BTN_UP        = PIN_BTN_UP;
-static const uint8_t BTN_DOWN      = PIN_BTN_DOWN;
-static const uint8_t BTN_LEFT      = PIN_BTN_LEFT;
-static const uint8_t BTN_RIGHT     = PIN_BTN_RIGHT;
+#define PIN_SPK_A         (12)
+#define PIN_SPK_B         (13)
 
 #define SDA 0
 #define SCL 0
 
+#define SS   PIN_SPI_SS
+#define MOSI PIN_SPI_MOSI
+#define MISO PIN_SPI_MISO
+#define SCK  PIN_SPI_SCK
+
+#define digitalPinToBit(p)        (((p) == PIN_BTN_B || (p) == PIN_SPK_A) ? 0 : \
+                                  (((p) == PIN_BTN_A || (p) == PIN_SPK_B) ? 1 : \
+                                  (((p) == PIN_BTN_RIGHT || (p) == PIN_SPI_SS) ? 2 : \
+                                  (((p) == PIN_BTN_DOWN || (p) == PIN_SPI_MOSI) ? 3 : \
+                                  (((p) == PIN_BTN_LEFT || (p) == PIN_SPI_MISO) ? 4 : \
+                                  (((p) == PIN_SPI_SCK || (p) == PIN_BTN_UP) ? 5 : \
+                                  (((p) == PIN_LCD_RESET) ? 6 : \
+                                  (((p) == PIN_LCD_DC) ? 7 : \
+                                  0 \
+    ))))))))
+
+#define digitalPinToDDR(p)        (((p) == PIN_SPI_SS || (p) == PIN_SPI_MOSI || (p) == PIN_SPI_MISO || (p) == PIN_SPI_SCK || (p) == PIN_SPK_A || (p) == PIN_SPK_B) ? DDRB : \
+                                  (((p) == PIN_BTN_A || (p) == PIN_BTN_B || (p) == PIN_BTN_UP || (p) == PIN_BTN_DOWN || (p) == PIN_BTN_LEFT || (p) == PIN_BTN_RIGHT) ? DDRC : \
+                                  (((p) == PIN_LCD_DC || (p) == PIN_LCD_RESET) ? DDRD : *(volatile uint8_t*)0 \
+    )))
+
+#define digitalPinToPORT(p)       (((p) == PIN_SPI_SS || (p) == PIN_SPI_MOSI || (p) == PIN_SPI_MISO || (p) == PIN_SPI_SCK || (p) == PIN_SPK_A || (p) == PIN_SPK_B) ? PORTB : \
+                                  (((p) == PIN_BTN_A || (p) == PIN_BTN_B || (p) == PIN_BTN_UP || (p) == PIN_BTN_DOWN || (p) == PIN_BTN_LEFT || (p) == PIN_BTN_RIGHT) ? PORTC : \
+                                  (((p) == PIN_LCD_DC || (p) == PIN_LCD_RESET) ? PORTD : *(volatile uint8_t*)0 \
+    )))
+
+#define digitalPinToPIN(p)        (((p) == PIN_SPI_SS || (p) == PIN_SPI_MOSI || (p) == PIN_SPI_MISO || (p) == PIN_SPI_SCK || (p) == PIN_SPK_A || (p) == PIN_SPK_B) ? PINB : \
+                                  (((p) == PIN_BTN_A || (p) == PIN_BTN_B || (p) == PIN_BTN_UP || (p) == PIN_BTN_DOWN || (p) == PIN_BTN_LEFT || (p) == PIN_BTN_RIGHT) ? PINC : \
+                                  (((p) == PIN_LCD_DC || (p) == PIN_LCD_RESET) ? PIND : *(volatile uint8_t*)0 \
+    )))
+
 #define digitalPinToPCICR(p)      (((p) >= PIN_BTN_A && (p) <= PIN_BTN_RIGHT) ? (&PCICR) : (uint8_t*)0)
 #define digitalPinToPCICRbit(p)   (((p) >= PIN_BTN_A && (p) <= PIN_BTN_RIGHT) ? 1 : 0)
 #define digitalPinToPCMSK(p)      (((p) >= PIN_BTN_A && (p) <= PIN_BTN_RIGHT) ? (&PCMSK1) : ((uint8_t*)0))
-#define digitalPinToPCMSKbit(p)   (((p) == PIN_BTN_A) ? 1 : (((p) == PIN_BTN_DOWN) ? 3 : (((p) == PIN_BTN_UP) ? 5 : (((p) == PIN_BTN_B) ? 0 : (((p) == PIN_BTN_LEFT) ? 4 : (((p) == PIN_BTN_RIGHT) ? 2 : 0))))))
+#define digitalPinToPCMSKbit(p)   (((p) >= PIN_BTN_A && (p) <= PIN_BTN_RIGHT) ? digitalPinToBit(p) : 0)
 
 #define digitalPinToInterrupt NOT_AN_INTERRUPT
 
@@ -160,6 +182,8 @@ const uint8_t PROGMEM digital_pin_to_port_PGM[NUM_DIGITAL_PINS] = {
 	PC,
 	PC,
 	PC,
+	PB,
+	PB,
 };
 
 const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[NUM_DIGITAL_PINS] = {
@@ -175,9 +199,13 @@ const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[NUM_DIGITAL_PINS] = {
 	_BV(3), // DOWN
 	_BV(4), // LEFT
 	_BV(2), // RIGHT
+	_BV(0), // SPK A
+	_BV(1), // SPK B
 };
 
 const uint8_t PROGMEM digital_pin_to_timer_PGM[NUM_DIGITAL_PINS] = {
+	NOT_ON_TIMER,
+	NOT_ON_TIMER,
 	NOT_ON_TIMER,
 	NOT_ON_TIMER,
 	NOT_ON_TIMER,

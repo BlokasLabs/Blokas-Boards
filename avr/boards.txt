@@ -32,8 +32,8 @@ midiboy.bootloader.file=Midiboy-Bootloader/Midiboy-Bootloader.hex
 
 midiboy.build.mcu=atmega328p
 midiboy.build.f_cpu=20000000L
-midiboy.build.board=AVR_UNO
+midiboy.build.board=AVR_MIDIBOY
 midiboy.build.core=arduino:arduino
 midiboy.build.variant=midiboy
 # PD3 and PD2 used for USB D- and D+, PD4 is used for USB Pull-up.
-midiboy.build.extra_flags=-DUSB_CFG_IOPORTNAME=D -DUSB_CFG_DMINUS_BIT=3 -DUSB_CFG_DPLUS_BIT=2 -DUSB_CFG_PULLUP_IOPORTNAME=D -DUSB_CFG_PULLUP_BIT=4 -DMIDIBOY=4
+midiboy.build.extra_flags=-DUSB_CFG_IOPORTNAME=D -DUSB_CFG_DMINUS_BIT=3 -DUSB_CFG_DPLUS_BIT=2 -DUSB_CFG_PULLUP_IOPORTNAME=D -DUSB_CFG_PULLUP_BIT=4 -DMIDIBOY=5
