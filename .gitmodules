@@ -1,0 +1,12 @@
+[submodule "avr/libraries/ArduboyTones"]
+	path = avr/libraries/ArduboyTones
+	url = https://github.com/BlokasLabs/ArduboyTones
+[submodule "avr/libraries/Arduboy"]
+	path = avr/libraries/Arduboy
+	url = https://github.com/BlokasLabs/Arduboy
+[submodule "avr/libraries/Arduboy2"]
+	path = avr/libraries/Arduboy2
+	url = https://github.com/BlokasLabs/Arduboy2
+[submodule "avr/libraries/USBMIDI"]
+	path = avr/libraries/USBMIDI
+	url = https://github.com/BlokasLabs/USBMIDI
