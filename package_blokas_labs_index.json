@@ -19,8 +19,8 @@
 					},
 					"url": "https://github.com/BlokasLabs/Blokas-Boards/raw/master/packages/blokas-boards-v1.0.0.zip",
 					"archiveFileName": "blokas-boards-v1.0.0.zip",
-					"checksum": "SHA-256:04a922809731a8d9e435e7ef0a133d1db760e0be3e07e1ccc73db9c9cde7fd89",
-					"size": "943317",
+					"checksum": "SHA-256:a9a9ba430abe2a1bc45786fd876227ee904b94a855547b025fe52f33be82e0c4",
+					"size": "943362",
 					"boards": [
 						{
 							"name": "Midiboy"
