@@ -12,6 +12,68 @@
 				{
 					"name": "Blokas AVR Boards",
 					"architecture": "avr",
+					"version": "1.0.0",
+					"category": "Contributed",
+					"help": {
+						"online": "https://blokas.io/midiboy"
+					},
+					"url": "https://github.com/BlokasLabs/Blokas-Boards/raw/master/packages/blokas-boards-v1.0.0.zip",
+					"archiveFileName": "blokas-boards-v1.0.0.zip",
+					"checksum": "SHA-256:a9a9ba430abe2a1bc45786fd876227ee904b94a855547b025fe52f33be82e0c4",
+					"size": "943362",
+					"boards": [
+						{
+							"name": "Midiboy"
+						}
+					],
+					"toolsDependencies": []
+				}
+			],
+			"tools": []
+		},
+		{
+			"name": "Blokas",
+			"maintainer": "Blokas Labs",
+			"websiteURL": "https://blokas.io/",
+			"email": "hello@blokas.io",
+			"help": {
+				"online": "https://blokas.io/"
+			},
+			"platforms": [
+				{
+					"name": "Blokas AVR Boards",
+					"architecture": "avr",
+					"version": "1.0.1",
+					"category": "Contributed",
+					"help": {
+						"online": "https://blokas.io/midiboy"
+					},
+					"url": "https://github.com/BlokasLabs/Blokas-Boards/raw/master/packages/blokas-boards-v1.0.1.zip",
+					"archiveFileName": "blokas-boards-v1.0.1.zip",
+					"checksum": "SHA-256:142174c99d01cb458f29216ea67f30f3bf9876fc7ad797aa044c1f9b604c79a8",
+					"size": "943362",
+					"boards": [
+						{
+							"name": "Midiboy"
+						}
+					],
+					"toolsDependencies": []
+				}
+			],
+			"tools": []
+		},
+		{
+			"name": "Blokas",
+			"maintainer": "Blokas Labs",
+			"websiteURL": "https://blokas.io/",
+			"email": "hello@blokas.io",
+			"help": {
+				"online": "https://blokas.io/"
+			},
+			"platforms": [
+				{
+					"name": "Blokas AVR Boards",
+					"architecture": "avr",
 					"version": "1.0.2",
 					"category": "Contributed",
 					"help": {
@@ -21,6 +83,37 @@
 					"archiveFileName": "blokas-boards-v1.0.2.zip",
 					"checksum": "SHA-256:b8cda8bf0da5c2031e6b7cbbf563c61a1d7e6974e95569a31b30b2edec42359f",
 					"size": "943103",
+					"boards": [
+						{
+							"name": "Midiboy"
+						}
+					],
+					"toolsDependencies": []
+				}
+			],
+			"tools": []
+		},
+		{
+			"name": "Blokas",
+			"maintainer": "Blokas Labs",
+			"websiteURL": "https://blokas.io/",
+			"email": "hello@blokas.io",
+			"help": {
+				"online": "https://blokas.io/"
+			},
+			"platforms": [
+				{
+					"name": "Blokas AVR Boards",
+					"architecture": "avr",
+					"version": "1.0.3",
+					"category": "Contributed",
+					"help": {
+						"online": "https://blokas.io/midiboy"
+					},
+					"url": "https://github.com/BlokasLabs/Blokas-Boards/raw/master/packages/blokas-boards-v1.0.3.zip",
+					"archiveFileName": "blokas-boards-v1.0.3.zip",
+					"checksum": "SHA-256:ebd829731080967bfc4e59f0ae5c0745132f35443edb1405cba80084797010eb",
+					"size": "944243",
 					"boards": [
 						{
 							"name": "Midiboy"
