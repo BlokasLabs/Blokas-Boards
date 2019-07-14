@@ -21,6 +21,7 @@ midiboy.upload.protocol=usbasp
 midiboy.upload.maximum_size=28672
 midiboy.upload.maximum_data_size=2048
 midiboy.upload.speed=115200
+midiboy.serial.port=USB
 
 midiboy.bootloader.tool=avrdude
 midiboy.bootloader.low_fuses=0xCE
@@ -34,6 +35,6 @@ midiboy.build.mcu=atmega328p
 midiboy.build.f_cpu=20000000L
 midiboy.build.board=AVR_MIDIBOY
 midiboy.build.core=arduino:arduino
-midiboy.build.variant=midiboy
+midiboy.build.variant=Midiboy
 # PD3 and PD2 used for USB D- and D+, PD4 is used for USB Pull-up.
 midiboy.build.extra_flags=-DUSB_CFG_IOPORTNAME=D -DUSB_CFG_DMINUS_BIT=3 -DUSB_CFG_DPLUS_BIT=2 -DUSB_CFG_PULLUP_IOPORTNAME=D -DUSB_CFG_PULLUP_BIT=4 -DMIDIBOY=6 -DUSB_INTR_CFG=EICRA -DUSB_INTR_ENABLE=EIMSK -DUSB_INTR_PENDING=EIFR -DUSB_INTR_ENABLE_BIT=INT1 -DUSB_INTR_PENDING_BIT=INTF1 -DUSB_INTR_VECTOR=INT1_vect "-DUSB_INTR_CFG_SET=(1 << ISC11)" -DUSB_COUNT_SOF=1
