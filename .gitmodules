@@ -10,3 +10,6 @@
 [submodule "avr/libraries/USBMIDI"]
 	path = avr/libraries/USBMIDI
 	url = https://github.com/BlokasLabs/USBMIDI
+[submodule "avr/libraries/Midiboy"]
+	path = avr/libraries/Midiboy
+	url = https://github.com/BlokasLabs/Midiboy
