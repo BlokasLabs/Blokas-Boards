@@ -21,7 +21,7 @@ midiboy.upload.protocol=usbasp
 midiboy.upload.maximum_size=28672
 midiboy.upload.maximum_data_size=2048
 midiboy.upload.speed=115200
-midiboy.serial.port=USB
+midiboy.program.extra_params=-PUSB
 
 midiboy.bootloader.tool=avrdude
 midiboy.bootloader.low_fuses=0xCE
